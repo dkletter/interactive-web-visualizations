@@ -19,6 +19,7 @@ d3.json(filepath).then(data => {
 			labels: labels[index]
 		}
 	});
+});
 
 // Sort the data by descending
 let sorted = items.sort((a, b) => b.samples - a.samples);
@@ -43,7 +44,7 @@ let traceData = [trace];
 
 // Apply a title to the layout
 let layout = {
-	title: "Top 10 OTUs",
+	title: "Top 10 OTUs"
 };
 
 // Render the plot to the div tag with id "bar"
