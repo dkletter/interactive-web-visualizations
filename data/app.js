@@ -1,17 +1,21 @@
 // Get the JSON endpoint
 const filepath = "data/samples.json";
 
+var menu = d3.select("#selDataset");
+var dataset = menu.property("value");
+
+
 // Fetch the JSON data
 d3.json(filepath).then(data => {
 	var mydata = data.samples[0];
 	var mymetadata = data.metadata[0];
 
-	// assign arrays to variables
+	// Assign arrays to variables
 	var samples = Object.values(mydata.sample_values);
 	var ids = Object.values(mydata.otu_ids);
 	var labels = Object.values(mydata.otu_labels);
 
-	// put arrays into objects
+	// Put arrays into objects
 	var items = ids.map((id, index) => {
 		return {
 			id: id,
@@ -23,6 +27,7 @@ d3.json(filepath).then(data => {
 
 // Sort the data by descending
 let sorted = items.sort((a, b) => b.samples - a.samples);
+console.log(sorted);
 
 // Slice the first 10 objects for plotting
 let sliced = sorted.slice(0, 10);
